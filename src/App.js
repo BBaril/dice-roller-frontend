@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 
 function App() {
-  const [roll, setRoll] = useState(null);
+  const [roll, setRoll] = useState("");    // State dor dice symbols
 
   const rollDice = async () => {
-    const response = await fetch("https://twodice-backend.onrender.com"); // Calls Flask API
+   try {
+    const response = await fetch("https://twodice-backend.onrender.com/roll"); // Calls Flask API
     const data = await response.json();
-    setRoll(data.result);
+    setRoll(data.result);  // Store Unicode dice symbols
+   } catch (error) {
+    console.error("Error fetching dice roll:", error);
+    }
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div>
       <h1>Dice Roller 🎲</h1>
-      <button onClick={rollDice} style={{ fontSize: "20px", padding: "10px" }}>
-        Roll the Dice
-      </button>
-      {roll !== null && <h2>You rolled a {roll}!</h2>}
+      <button onClick={rollDice}>Roll Dice</button>
+      <h2 style={{ fontSize: "100px" }}>{roll}</h2> {/* Display dice result */}
     </div>
   );
 }
