@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Container: centers everything */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
+/* Title styling */
+.title {
+  font-size: 2rem;
+  margin-bottom: 0rem;
+  margin-top: 1.5rem;
+  color: #333;
+  display: flex;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
+.title-icon {
+ height: 2rem;
+ width: auto;
+ margin-left: 0.5   qrem;
+ }
+
+/* Dice styling */
+.dice {
+  font-size: 5rem;
+  color: #00e5e5;
+  text-shadow: 1px 1px 2px black; /* Black shadow to make it pop more */
+  transition: transform 0.3s ease;
+  margin: 0;
+  padding: 0;
+}
+
+/* Roll button styling */
+.roll-button {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* The shake/roll animation */
+.dice-rolled {
+  animation: rollAnimation 0.5s ease-in-out;
+}
+
+@keyframes rollAnimation {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  20% {
+    transform: rotate(5deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
